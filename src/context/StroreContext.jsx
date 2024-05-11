@@ -8,7 +8,7 @@ export const StoreContext = createContext(null)
 const StroeContextProvider = (props) => {
 
     const [cartItems, setCartItems] = useState({});
-    const url = 'http://localhost:4000'
+    const url = String(import.meta.env.VITE_BACKEND_URL);
     const [token, setToken] = useState("");
     const [food_list, setFoodList] = useState([]);
     const [loading, setLoading] = useState(false)
