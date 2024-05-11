@@ -29,7 +29,7 @@ const EmailVerify = () => {
     return (
         <>
             {validUrl ? (
-                <div className="container">
+                <div className="email-verify">
                     <h1>Email Verified Successfully.</h1>
                     <Link to='/'>
                         <button className='green-btn'>Login</button>
