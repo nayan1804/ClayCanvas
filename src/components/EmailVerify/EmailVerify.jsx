@@ -7,36 +7,38 @@ import axios from 'axios';
 const EmailVerify = () => {
 
     const [validUrl, setValidUrl] = useState(false);
-    const { url } = useContext(StoreContext);
+    const { url, setLoading } = useContext(StoreContext);
     const param = useParams();
-    
+
 
     useEffect(() => {
         ; (async () => {
             try {
-                const {data} = await axios.get(`${url}/api/user/${param.id}/verify/${param.token}`);
-                console.log(data);
+                setLoading(true);
+                const { data } = await axios.get(`${url}/api/user/${param.id}/verify/${param.token}`);
+                setLoading(false);
                 setValidUrl(data.success);
             } catch (error) {
                 console.log(error)
                 setValidUrl(false)
+                setLoading(false)
             }
         })();
-    },[])
+    }, [])
 
     return (
-        <div>
+        <>
             {validUrl ? (
                 <div className="container">
                     <h1>Email Verified Successfully.</h1>
                     <Link to='/'>
                         <button className='green-btn'>Login</button>
                     </Link>
-                </div> 
-            ): (
+                </div>
+            ) : (
                 <h1>404 Not Found</h1>
-                )}
-        </div>
+            )}
+        </>
     )
 }
 
