@@ -3,29 +3,36 @@ import './EmailVerify.css'
 import { Link, useParams } from 'react-router-dom';
 import { StoreContext } from '../../context/StroreContext';
 import axios from 'axios';
+import Loader from '../Loader/Loader'
 
 const EmailVerify = () => {
 
     const [validUrl, setValidUrl] = useState(false);
-    const { url, setLoading } = useContext(StoreContext);
+    const { url } = useContext(StoreContext);
     const param = useParams();
+    const [loading, setLoading] = useState(false);
+    
 
 
     useEffect(() => {
         ; (async () => {
+            setLoading(true);
             try {
-                setLoading(true);
                 const { data } = await axios.get(`${url}/api/user/${param.id}/verify/${param.token}`);
                 console.log(data);
-                setLoading(false);
-                data.success && setValidUrl(true);
+                setValidUrl(data.success)
             } catch (error) {
                 console.log(error)
                 setValidUrl(false)
-                setLoading(false)
+            } finally {
+                setLoading(false);
             }
         })();
     }, [])
+
+    if (loading) {
+        return <Loader/>
+    }
 
     return (
         <>
