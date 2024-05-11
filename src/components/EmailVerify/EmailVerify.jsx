@@ -16,6 +16,7 @@ const EmailVerify = () => {
             try {
                 setLoading(true);
                 const { data } = await axios.get(`${url}/api/user/${param.id}/verify/${param.token}`);
+                console.log(data);
                 setLoading(false);
                 setValidUrl(data.success);
             } catch (error) {
