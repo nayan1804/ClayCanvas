@@ -15,8 +15,8 @@ const App = () => {
     <>
       <ToastContainer />
       {showLogin && <LoginPopup setShowLogin={setShowLogin} />}
-      <div className='app'>
         <Navbar setShowLogin={setShowLogin} />
+      <div className='app'>
         {loading
           ? <Loader />
           : <Routes>
