@@ -1,38 +1,38 @@
 import React, { useContext } from 'react'
-import './FoodItem.css'
+import './Items.css'
 import { assets } from '../../assets/assets'
 import { StoreContext } from '../../context/StroreContext';
 
-const FoodItem = ({ id, name, price, description, image }) => {
+const Items = ({ id, name, price, description, image }) => {
 
     const { cartItems, addToCart, removeFromCart, url } = useContext(StoreContext)
 
 
     return (
-        <div className='food-item'>
-            <div className="food-item-img-container">
-                <img className='food-item-image' src={url+"/images/"+image} alt="" />
+        <div className='items'>
+            <div className="items-img-container">
+                <img className='items-image' src={url+"/images/"+image} alt="" />
                 {!cartItems[id]
                     ? <img className='add' onClick={() => { addToCart(id) }} src={assets.add_icon_white} alt='' />
-                    : <div className="food-item-counter">
+                    : <div className="items-counter">
                         <img onClick={() => removeFromCart(id)} src={assets.remove_icon_red} alt="" />
                         <p>{cartItems[id]}</p>
                         <img onClick={() => addToCart(id)} src={assets.add_icon_green} alt="" />
                     </div>
                 }
             </div>
-            <div className="food-item-info">
-                <div className="food-item-name-rating">
+            <div className="items-info">
+                <div className="items-name-rating">
                     <p>{name}</p>
-                    <img src={assets.rating_starts} alt="" />
+                    {/* <img src={assets.rating_starts} alt="" /> */}
                 </div>
-                <p className="food-item-desc">
-                    {description}
+                <p className="items-desc">
+                    {description.slice(0, 130)}...
                 </p>
-                <p className="food-item-price">${price}</p>
+                <p className="items-price">₹{" "}{price}</p>
             </div>
         </div>
     )
 }
 
-export default FoodItem
+export default Items

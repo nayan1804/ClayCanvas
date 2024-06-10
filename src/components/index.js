@@ -1,8 +1,8 @@
 import Navbar from "./Navbar/Navbar"
 import Header from "./Header/Header"
 import ExploreMunu from "./ExploreMenu/ExploreMunu"
-import FoodDisplay from "./FoodDisplay/FoodDisplay"
-import FoodItem from "./FoodItem/FoodItem"
+import ItemDisplay from "./ItemDisplay/ItemDisplay"
+import Items from "./Items/Items"
 import Footer from "./Footer/Footer"
 import AppDownload from "./AppDownload/AppDownload"
 import LoginPopup from "./LoginPopup/LoginPopup"
@@ -13,11 +13,11 @@ export {
     Navbar,
     Header,
     ExploreMunu,
-    FoodDisplay,
-    FoodItem,
+    ItemDisplay,
     Footer,
     AppDownload,
     LoginPopup,
     EmailVerify,
-    Loader
+    Loader,
+    Items
 }

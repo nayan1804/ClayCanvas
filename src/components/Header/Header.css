@@ -1,8 +1,10 @@
 .header{
     height: 34vw;
     margin: 30px auto;
-    background: url('/header_img.png') no-repeat;
-    background-size: contain;
+    background: url('../../assets/header_img2.png') no-repeat;
+    background-size: cover;
+    height: 550px;
+    box-shadow: 5px 5px 5px rgb(92, 89, 89);
     position: relative;
 }
 .header-contents{
@@ -18,8 +20,9 @@
 }
 
 .header-contents h2{
+    text-shadow: 0px 0px 4px #333131;
     font-weight: 500;
-    color: white;
+    color: rgb(255, 255, 255);
     font-size: max(4.5vw, 22px);
 }
 

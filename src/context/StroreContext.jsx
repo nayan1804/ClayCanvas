@@ -10,7 +10,7 @@ const StroeContextProvider = (props) => {
     const [cartItems, setCartItems] = useState({});
     const url = String(import.meta.env.VITE_BACKEND_URL);
     const [token, setToken] = useState("");
-    const [food_list, setFoodList] = useState([]);
+    const [Item_list, setItemList] = useState([]);
     const [loading, setLoading] = useState(false)
 
     const addToCart = async (itemId) => {
@@ -37,7 +37,7 @@ const StroeContextProvider = (props) => {
         let totalAmount = 0;
         for (const item in cartItems) {
             if (cartItems[item] > 0) {
-                let itemInfo = food_list.find((product) => product._id === item);
+                let itemInfo = Item_list.find((product) => product._id === item);
                 totalAmount += itemInfo.price * cartItems[item]
             }
         }
@@ -46,7 +46,7 @@ const StroeContextProvider = (props) => {
 
     const fetechFoodList = async () => {
         const response = await axios.get(url + "/api/food/list");
-        setFoodList(response.data.data);
+        setItemList(response.data.data);
     }
 
     const loadCartData = async (token) => {
@@ -66,7 +66,7 @@ const StroeContextProvider = (props) => {
     },[])
 
     const contextValue = {
-        food_list,
+        Item_list,
         cartItems,
         setCartItems,
         addToCart,

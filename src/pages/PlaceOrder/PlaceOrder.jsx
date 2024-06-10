@@ -6,7 +6,7 @@ import { useNavigate } from 'react-router-dom';
 
 const PlaceOrder = () => {
 
-  const { getTotalCartAmount, token, food_list, cartItems, url } = useContext(StoreContext);
+  const { getTotalCartAmount, token, Item_list, cartItems, url } = useContext(StoreContext);
   const navigate = useNavigate();
 
   const [data, setData] = useState({
@@ -29,7 +29,7 @@ const PlaceOrder = () => {
   const placeOrder = async (event) => {
     event.preventDefault();
     let orderItems = [];
-    food_list.map((item) => {
+    Item_list.map((item) => {
       if (cartItems[item._id] > 0) {
         let itemInfo = item;
         itemInfo["quantity"] = cartItems[item._id];
@@ -91,17 +91,17 @@ const PlaceOrder = () => {
             <div>
               <div className="cart-total-details">
                 <p>Subtotal</p>
-                <p>${getTotalCartAmount()}</p>
+                <p>₹{getTotalCartAmount()}</p>
               </div>
               <hr />
               <div className="cart-total-details">
                 <p>Delivery Fee</p>
-                <p>${getTotalCartAmount()?2:0}</p>
+                <p>₹{getTotalCartAmount()?2:0}</p>
               </div>
               <hr />
               <div className="cart-total-details">
                 <b>Total</b>
-                <b>${getTotalCartAmount()?getTotalCartAmount() + 2:0}</b>
+                <b>₹{getTotalCartAmount()?getTotalCartAmount() + 2:0}</b>
               </div>
             </div>
             <button type='submit'>PROCEED TO Payment</button>
